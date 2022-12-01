@@ -1,0 +1,38 @@
+```{r data generation, echo = FALSE, results = "hide"}
+## parameters
+excess <- sample(2:10, 1) * 5
+fuel <- sample(10:40, 1) * 5
+
+## solution
+solution <- fuel * (0.05*7/2 + 0.95*2) * (1 + excess/100) * (1/0.21)
+```
+
+Question
+========
+To ensure complete combustion, $`r excess`$% excess air is supplied to a furnace burning  $`r fuel`$kmol/hr of natural gas. The v/v composition of natural gas is 95% methane and 5% ethane. Air contains 21% oxygen by mole. Calculate the number of kmol/hr of air required (air is 21% $O_2$). The reactions are:  
+$$CH_4 + 2O_2 \rightarrow  CO_2 + 2H_2O$$  
+$$2C_2H_6 + 7O_2 \rightarrow 4CO_2 + 6H_2O$$
+
+Solution
+========
+Multiply the flow of fuel by 0.95 to get the flow of methane and multiply this by 2 to get the amount of $O_2$ required to burn this.  
+Do the same for ethane, multiplying by 0.05 and then $\frac{7}{2}$ to get the flow of $O_2$ required to burn the ethane.  
+Add these two oxygen flows together and multiply by 1 plus the excess. This gives the total amount of $O_2$ required. Divide this by 0.21 to get the amount of air required.
+Methane flow = $`r fuel`\;\times\;0.95$ = $`r fuel * 0.95`$kmol/hr  
+$O_2$ to burn methane = $`r fuel * 0.95`\;\times\;2\;=\;`r fuel*0.95*2`$ kmol/hr  
+
+Ethane flow = $`r fuel`\;\times\;0.05$ = $`r fuel * 0.05`$kmol/hr  
+$O_2$ to burn ethane = $`r fuel * 0.05`\;\times\;\frac{7}{2}\;=\;`r fuel*0.05*7/2`$kmol/hr  
+
+$O_2$ for burn = $`r fuel*0.05*7/2 + fuel*0.95*2`$kmol/hr  
+Add excess gives total $O_2$ for burn = $`r (fuel*0.05*7/2 + fuel*0.95*2)` \times (1 + `r excess` /100) $kmol/hr
+
+Divide by 21% air component to get air needed for burn = $`r (fuel*0.05*7/2 + fuel*0.95*2)` \times (1 + `r excess` /100) / 0.21 $kmol/hr
+
+
+Meta-information
+================
+extype: num
+exsolution: `r solution %>% signif(3)`
+exname: natural gas
+extol: `r solution*0.05`

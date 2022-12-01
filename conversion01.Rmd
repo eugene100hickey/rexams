@@ -1,0 +1,93 @@
+```{r set_up, echo = FALSE, results = "hide"}
+## themes
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+methanol_feed <- runif(1, 100, 500) %>% round(0)
+conversion <- runif(1, 0.3, 0.7) %>% round(2)
+selectivity <- runif(1, 0.3, 0.7) %>% round(2)
+yield <- conversion * selectivity %>% round(2)
+
+feed <- data.frame(meth = methanol_feed, 
+                   co = methanol_feed, 
+                   h2 = 2*methanol_feed, 
+                   water = 0, 
+                   ethanol = 0, 
+                   acetic = 0)
+
+product <- data.frame(meth = methanol_feed*(1-conversion), 
+                      co = methanol_feed*(1-conversion), 
+                      h2 = 2*methanol_feed*(1-yield), 
+                      water = methanol_feed*yield, 
+                      ethanol = methanol_feed*yield, 
+                      acetic = methanol_feed*(conversion-yield)) %>% 
+  round(2)
+
+rxn_table <- rbind(feed, product) %>% t() %>% as.data.frame()
+names(rxn_table) <- c("Feed (kmol/hr)", "Product (kmol/hr)")
+rownames(rxn_table) <- c("Methanol", "Carbon Dioxide", "Hydrogen Gas", "Water", "Ethanol", "Acetic Acid")
+
+
+# solution
+sol <- c(conversion, selectivity, yield) * 100
+# labels
+labels <- c("Conversion", "Selectivity", "Yield")
+
+```
+
+Question
+========
+  The table below represents the results of a reaction to produce ethanol by reacting methanol, carbon dioxide, and hydrogen gas. Not all the methanol is reacted. There is a competing reaction which produces acetic acid. 
+  For your information (this is not necesary to solve the problems), the reactions are given below:
+  
+$$CH_3OH\:+\:CO\:+\:2H_2\:\rightarrow\:C_2H_5OH\:+\:H_2O$$  
+$$CH_3OH\:+\:CO\:\rightarrow\:CH_3COOH$$  
+  
+  Calculate the  
+-  $Conversion\:of\:Methanol$,   
+-  $Selectivity\:for\:Ethanol$, and   
+-  $Yield\:of\:Ethanol$   
+  for this reaction.  
+  Give your answer as percentages, just entering a number between 0 and 100 into the boxes below .
+  
+<br>
+  
+| $Conversion\:(\%)$   | $Selectivity\:(\%)$  |     $Yield\:(\%)$    |
+|:--------------------:|:--------------------:|:--------------------:|
+| \#\#ANSWER1\#\#%     | \#\#ANSWER2\#\#%     | \#\#ANSWER3\#\#%     |
+  
+
+
+```{r table, echo = FALSE, comment = NA}
+rxn_table %>% kable() %>% kable_styling(bootstrap_options = c("striped", "condensed"))
+```
+
+
+
+  
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+Solution
+========
+Apply the formulae:
+- $conversion\:=\:\frac{reacted\:methanol}{fed\:methanol}$  
+- $selectivity\:=\:\frac{ethanol\:produced}{max.\:ethanol\:from\:reacted\:mehanol}$   
+- $yield\:=\:\frac{ethanol\:produced}{ethanol\:that\:could\:be\:produced\:from\:all\:methanol\:fed}$  
+
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(paste("$", labels," = ", format(sol), "$", "\\%", sep = ""), markup = "markdown")
+```
+
+  
+Meta-information
+================
+extype: cloze
+exsolution: `r paste(sol, collapse = "|")`
+exclozetype: num|num|num
+exname: conversion
+extol: 2
+exextra[numwidth,logical]: TRUE

@@ -1,0 +1,92 @@
+```{r set_up, echo = FALSE, results = "hide"}
+# # themes
+# library(tidyverse)
+# library(ggExtra)
+# library(glue)
+# library(ggrepel)
+# library(png)
+# library(grid)
+
+theme_set(theme_minimal())
+#theme_update(panel.border = element_rect(colour = "black", fill=NA, size=2))
+
+xa <- seq(0, 1, 0.001)
+alpha <- runif(1, 1.5, 4) %>% round(1)
+ya <- alpha*xa/(1+xa*(alpha-1))
+vle <- data.frame(xa = xa, ya=ya)
+
+feed <- runif(1, 30, 70) %>% round(0) / 100
+q <- runif(1, 0.2, 0.6) %>% round(1)
+distil <- runif(1, 0.8, 0.95)
+q_slope <- -q / (1-q)
+q_end_x <- 0
+q_end_y <- feed - q_slope*feed
+q_end_x <- ifelse(q_end_y > 1, (1-feed)/q_slope + feed, q_end_x)
+q_end_y <- ifelse(q_end_y > 1, 1, q_end_y)
+
+a <- q_slope*(alpha-1)
+b <- q_slope - alpha - q_slope*alpha*feed + alpha*feed + q_slope*feed - feed
+c <- -q_slope*feed + feed
+x <- (-b+sqrt(b^2-4*a*c)*c(-1, 1))/2/a
+x <- x[x > 0 & x < 1]
+y <- alpha*x / (1+x*(alpha-1))
+rectifying_slope <- (distil - y) / (distil - x)
+rmin_intercept <- distil*(1-rectifying_slope)
+rmin <- distil/rmin_intercept - 1
+
+## solution
+sol <- c(q, rmin) %>% round(3)
+answer_list <- c("liquid fraction, q", "minimum reflux")
+```
+
+Question
+========
+  
+  The diagram below shows part of a McCabe-Thiel diagram with the q-line (green) and the rectifying line (blue) for minimum reflux drawn in. Use this diagram to estimate the liquid fraction, $q$, of the feed stream and the minimum reflux ratio, $R_{min}$.
+  
+|$q$              |    $R_{min}$         |
+|:---------------:|:--------------------:|
+|\#\#ANSWER1\#\#  | \#\#ANSWER2\#\#     |
+
+```{r plot_output, echo = FALSE, comment = NA, fig.cap = "", fig.align='center', out.width = "80%"}
+vle %>% ggplot(aes(xa, ya)) + 
+  geom_line() + 
+  geom_abline(intercept = 0, slope = 1, col = "red") + 
+  labs(title = "Vapour Liquid Equilibrium Diagram",
+       x = "Liquid Fraction of Component A - x",
+       y = "Vapour Fraction of Component A - y") +
+  scale_x_continuous(breaks = seq(0, 1, 0.1), limits = c(0, 1), minor_breaks = seq(0, 1, 0.05)) +
+  scale_y_continuous(breaks = seq(0, 1, 0.1), limits = c(0, 1), minor_breaks = seq(0, 1, 0.05)) +
+  geom_vline(xintercept = c(0, 1)) + 
+  geom_hline(yintercept = c(0, 1)) + 
+  geom_segment(aes(x = feed, y = feed, xend = q_end_x, yend = q_end_y), col = "green") + 
+  geom_segment(aes(x = 0, y = rmin_intercept, xend = distil, yend = distil), col = "blue")
+```
+
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Solution
+========
+  The slope of the q-line is given by: $slope\;=\;\frac{-q}{1-q}$. From the diagram, this slope is about $`r q_slope`$. The intercept of the rectifying line on the y-axis is given by $intercept\;=\;\frac{x_D}{1+R_{min}}$ so $`r rmin_intercept %>% signif(3)` = \frac{`r distil %>% signif(3)`}{1 + R_{min}}$
+  
+
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(paste("$", answer_list, " = ", sol, "$", sep = ""), markup = "markdown")
+```
+
+  
+  
+Meta-information
+================
+extype: cloze
+exsolution: `r paste(sol, collapse = "|")`
+exclozetype: num|num
+exname: mccabe
+extol: 0.02
+exextra[numwidth,logical]: TRUE

@@ -1,0 +1,63 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library(cowplot)
+library(magick)
+library(tidyverse)
+library(patchwork)
+library(glue)
+
+# setwd("/home/eugene/Desktop/Academic/Science4/ManuTech/quizes/2020/")
+theme_set(theme_minimal())
+
+hkl <- c("$(001)$", "$(100)$", "$(010)$", "$(101)$", "$(110)$", "$(011)$", "$(111)$", "$(\bar{1}11)$", "$(1\bar{1}1)$")
+
+hkl <- c("(001)", "(100)", "(010)", "(101)", "(110)", "(011)", "(111)", "(\\bar{1}11)", "(1\\bar{1}1)")
+
+image_index <- sample(1:9, 3)
+image_url <- glue("/home/eugene/Desktop/Academic/Science4/ManuTech/quizes/2020/xtal-planes/xtal0{image_index}.png")
+
+image_line <- (ggdraw() + draw_image(image_url[1])) +
+  (ggdraw() + draw_image(image_url[2])) +
+  (ggdraw() + draw_image(image_url[3]))
+
+## QUESTION/ANSWER GENERATION
+questions <- hkl
+solutions <- 1:9 %in% image_index
+explanations <- character(9)
+
+explanations[1] <- "Would cut z-axis at 1, parallel to x and y axes"
+explanations[2] <- "Would cut x-axis at 1, parallel to y and z axes"
+explanations[3] <- "Would cut y-axis at 1, parallel to x and z axes"
+explanations[4] <- "Would cut x-axis at 1 and z-axis at 1, parallel to y-axis"
+explanations[5] <- "Would cut x-axis at 1 and y-axis at 1, parallel to z-axis"
+explanations[6] <- "Would cut y-axis at 1 and z-axis at 1, parallel to x-axis"
+explanations[7] <- "Would cut all three axes at 1"
+explanations[8] <- "Would cut y-axis at 1 and z-axis at 1, cut the x-axis at -1"
+explanations[9] <- "Would cut x-axis at 1 and z-axis at 1, cut the y-axis at -1"
+```
+
+Question
+========
+The diagram below shows three unit cells, each with a crystal plane drawn in. Tick the box if the Miller indices correspond to one of the shown planes (you should tick three of the nine boxes)
+  
+```{r boxplot, echo = FALSE, results = "hide", fig.height = 4, fig.width = 10, fig.path = "", fig.cap = ""}
+image_line
+```
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(glue("${questions}$"), markup = "markdown")
+```
+
+
+Solution
+========
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(solutions, "True", "False"), explanations, markup = "markdown")
+```
+
+Meta-information
+================
+extype: mchoice
+exsolution: `r mchoice2string(solutions)`
+exname: Miller

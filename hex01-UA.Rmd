@@ -1,0 +1,67 @@
+```{r set_up, echo = FALSE, results = "hide"}
+## themes
+library(tidyverse)
+library(ggExtra)
+library(glue)
+library(ggrepel)
+library(png)
+library(grid)
+
+theme_set(theme_void())
+theme_update(text = element_text(family = "Ink Free", size = 20, colour = "firebrick4"))
+
+img <- readPNG("/home/eugene/Desktop/Academic/Science4/ManuTech/quizes/2020/hex01.png")
+g <- rasterGrob(img, interpolate = T)
+
+# data
+temperatures <- data.frame(labels = c("thin", "thout", "tcin", "tcout"), 
+                           temps = round(c(runif(1, min=70, max=95),
+                                            runif(1, min=40, max=60),
+                                            runif(1, min=10, max=35),
+                                            runif(1, min=45, max=60)), 0),
+                           x = c(76, 38, 10, 92),
+                           y = c(05, 94, 25, 39))
+temperatures$temp_string <- glue("= {temperatures$temps}°C")
+
+hot_flow <- runif(1, 2, 5) %>% round(1)
+
+cc <- 4180
+ch <- 1160
+q <- ch*hot_flow*(temperatures$temps[1] - temperatures$temps[2])
+
+delta_T_Right <- temperatures$temps[1] - temperatures$temps[4]
+delta_T_Left <- temperatures$temps[2] - temperatures$temps[3]
+LMTD <- (delta_T_Left - delta_T_Right) / log(delta_T_Left/delta_T_Right)
+
+## solution
+UA <- q / LMTD
+```
+
+Question
+========
+  
+  The diagram below shows a counter current heat exchanger. $T_{hot}in `r temperatures$temp_string[1]`$, $T_{hot}out `r temperatures$temp_string[2]`$, $T_{cold}in `r temperatures$temp_string[3]`$, and $T_{cold}out `r temperatures$temp_string[4]`$. The flow of the hot stream is $m_H\;=\; `r hot_flow` kg/s$. The heat capacity of the hot stream is $=\;`r ch` J/kg/°C$. Calculate the UA value for the heat exchanger. Give your answer in W/°C. Just give the number, don't include the units in your answer.
+
+
+```{r plot_output, echo = FALSE, comment = NA, fig.cap = "", fig.align='center', fig.width = 10}
+temperatures %>% ggplot(aes(label = temp_string, x= x, y=y)) + 
+  annotation_custom(g, xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) + 
+  geom_text(col = "firebrick4", size = 10, family = "Ink Free") + 
+  xlim(0, 100) + 
+  ylim(0, 100)
+```
+
+Solution
+========
+  The UA value is given by $UA \; = \; q/LMTD$ where $q \; = \; m_H\times C_H\times (T_{Hot}in - T_{Hot}out)$ and $LMTD \; = \; \frac{(\Delta T_{left} - \Delta T_{right})}{log_e(\Delta T_{left}/\Delta T_{left})}$
+  
+
+  
+  
+  
+  Meta-information
+================
+  extype: num
+exsolution: `r fmt(UA)`
+exname: UA
+extol: `r UA*0.05`

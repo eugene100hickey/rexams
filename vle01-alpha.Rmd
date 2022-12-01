@@ -1,0 +1,57 @@
+```{r set_up, echo = FALSE, results = "hide"}
+## themes
+# library(tidyverse)
+# library(ggExtra)
+# library(glue)
+# library(ggrepel)
+# library(png)
+# library(grid)
+
+theme_set(theme_minimal())
+theme_update(panel.grid.minor = element_line(colour = "darkgrey"),
+             panel.grid.major = element_line(colour = "darkslategrey"))
+#theme_update(panel.border = element_rect(colour = "black", fill=NA, size=2))
+
+xa <- seq(0, 1, 0.001)
+alpha <- runif(1, 1.5, 4) %>% round(1)
+ya <- alpha*xa/(1+xa*(alpha-1))
+vle <- data.frame(xa = xa, ya=ya)
+
+
+## solution
+alpha <- alpha
+```
+
+Question
+========
+  
+  The diagram below shows a VLE curve for two components, $A$ and $B$. Use this VLE curve to calculate the relative volatility, $\alpha$, of the mixture when $x_A$ is $`r runif(1, 0.3, 0.7) %>% round(2)`$
+
+```{r plot_output, echo = FALSE, comment = NA, fig.cap = "", fig.align='center', fig.width = 6, fig.height=6}
+vle %>% ggplot(aes(xa, ya)) + 
+  geom_line() + 
+  geom_abline(intercept = 0, slope = 1, col = "red") + 
+  labs(title = "Vapour Liquid Equilibrium Diagram",
+       x = "Liquid Fraction of Component A - x",
+       y = "Vapour Fraction of Component A - y") +
+  scale_x_continuous(breaks = seq(0, 1, 0.1), limits = c(0, 1), minor_breaks = seq(0, 1, 0.05)) +
+  scale_y_continuous(breaks = seq(0, 1, 0.1), limits = c(0, 1), minor_breaks = seq(0, 1, 0.05)) +
+  geom_vline(xintercept = c(0, 1)) + 
+  geom_hline(yintercept = c(0, 1))
+```
+
+
+Solution
+========
+  The relative volatility is given by: $\alpha \;=\; \frac{y_A / x_A}{y_B / x_B}$
+  
+
+  
+  
+  
+  Meta-information
+================
+  extype: num
+exsolution: `r fmt(alpha)`
+exname: alpha
+extol: `r 0.05*alpha`

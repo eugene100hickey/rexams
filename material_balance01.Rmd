@@ -1,0 +1,100 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library(tidyverse)
+library(glue)
+
+repeat{
+  
+  feed_flow <- runif(1, 50, 200) %>% round(0)
+  octane_feed_pct <- runif(1, 20, 45) %>% round(0)
+  heptane_feed_pct <- runif(1, 20, 45) %>% round(0)
+  hexane_feed_pct <- 100 - octane_feed_pct - heptane_feed_pct
+  hexane_distil_ratio <- runif(1, 70, 95) %>% round(0)
+  octane_bottom_pct <- runif(1, 70, 90) %>% round(0)
+  
+  feed <- data.frame(total_flow = feed_flow, 
+                     octane_flow = feed_flow*octane_feed_pct/100,
+                     heptane_flow = feed_flow*heptane_feed_pct/100,
+                     hexane_flow = feed_flow*hexane_feed_pct/100,
+                     octane_pct = octane_feed_pct,
+                     heptane_pct = heptane_feed_pct,
+                     hexane_pct = hexane_feed_pct)
+  distil <- feed
+  bottoms <- feed
+  
+  distil$hexane_flow <- feed$hexane_flow * hexane_distil_ratio / 100
+  distil$octane_flow <- 0
+  distil$octane_pct <- 0
+  bottoms$octane_flow <- feed$octane_flow
+  bottoms$octane_pct <- octane_bottom_pct
+  bottoms$total_flow <- bottoms$octane_flow / bottoms$octane_pct *100
+  distil$total_flow <- feed$total_flow - bottoms$total_flow
+  distil$heptane_flow <- distil$total_flow - distil$hexane_flow
+  distil$heptane_pct <- distil$heptane_flow / distil$total_flow *100
+  distil$hexane_pct <- distil$hexane_flow / distil$total_flow * 100
+  
+  bottoms$heptane_flow <- feed$heptane_flow - distil$heptane_flow
+  bottoms$hexane_flow <- feed$hexane_flow - distil$hexane_flow
+  bottoms$heptane_pct <- bottoms$heptane_flow / bottoms$total_flow *100
+  bottoms$hexane_pct <- bottoms$hexane_flow / bottoms$total_flow *100
+  
+  
+  bottoms <- bottoms %>% round(2)
+  distil <- distil %>% round(2)
+  
+  names(feed) <- paste("Feed", names(feed), sep = " ")
+  names(distil) <- paste("Distil", names(distil), sep = " ")
+  names(bottoms) <- paste("Bottoms", names(bottoms), sep = " ")
+  
+  # Solution
+  sol <- c(feed, distil, bottoms) %>% unlist
+  sol_string <- glue("${names(sol)} = {sol}$") %>% 
+    str_replace_all("_", " ") %>% 
+    str_replace_all(" ", "\\\\:")
+  
+  if((sum(feed < 0) + sum(distil < 0) + sum(bottoms < 0)) == 0){
+    break()
+  }
+}
+```
+
+
+Question
+========
+
+A feed stream goes into a distillation column with a feed flow of $`r feed_flow`kg/hr$ and a composition of $`r octane_feed_pct`$ % octane, $`r heptane_feed_pct`$ % heptane, $`r 100-heptane_feed_pct-octane_feed_pct`$ % hexane. The distillate stream from the column carries $`r hexane_distil_ratio`$% of the hexane fed and virtually no octane. The bottoms stream is $`r octane_bottom_pct`$% octane. Fill out the table below
+
+
+
+
+|                           | $Feed\:Stream\;$    |$Distillate\:Stream\;$ | $Bottoms\:Stream\;$ |
+|:-------------------------:|-------------------|---------------------|--------------------|
+|$Total\:Flow\:(kg/hr)$     | \#\#ANSWER1\#\#   | \#\#ANSWER8\#\#     | \#\#ANSWER15\#\#   |
+|$Octane\:Flow\:(kg/hr)$    | \#\#ANSWER2\#\#   | \#\#ANSWER9\#\#     | \#\#ANSWER16\#\#   |
+|$Heptane\:Flow\:(kg/hr)$   | \#\#ANSWER3\#\#   | \#\#ANSWER10\#\#    | \#\#ANSWER17\#\#   |
+|$Hexane\:Flow\:(kg/hr)$    | \#\#ANSWER4\#\#   | \#\#ANSWER11\#\#    | \#\#ANSWER18\#\#   |
+|$Octane\:Percent\:(\%)$    | \#\#ANSWER5\#\#\% | \#\#ANSWER12\#\#\%  | \#\#ANSWER19\#\#\% |
+|$Heptane\:Percent\:(\%)$   | \#\#ANSWER6\#\#\% | \#\#ANSWER13\#\#\%  | \#\#ANSWER20\#\#\% |
+|$Hexane\:Percent\:(\%)$    | \#\#ANSWER7\#\#\% | \#\#ANSWER14\#\#\%  | \#\#ANSWER21\#\#\% |
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Solution
+========
+
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(sol_string, markup = "markdown")
+```
+
+
+Meta-information
+================
+extype: cloze
+exsolution: `r paste(sol, collapse = "|")`
+exclozetype: num|num|num|num|num|num|num|num|num|num|num|num|num|num|num|num|num|num|num|num|num
+exname: distillation material balance
+extol: 1.0
+exextra[numwidth,logical]: TRUE

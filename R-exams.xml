@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/R-exams/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> R01 Q1 : natural_gas </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>To ensure complete combustion, <span class="math inline">\(30\)</span>% excess air is supplied to a furnace burning <span class="math inline">\(110\)</span>kmol/hr of natural gas. The v/v composition of natural gas is 95% methane and 5% ethane. Air contains 21% oxygen by mole. Calculate the number of kmol/hr of air required. The reactions are:<br />
+<span class="math display">\[CH_4 + 2O_2 \rightarrow  CO_2 + 2H_2O\]</span><br />
+<span class="math display">\[2C_2H_6 + 7O_2 \rightarrow 4CO_2 + 6H_2O\]</span></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Multiply the flow of fuel by 0.95 to get the flow of methane and multiply this by 2 to get the amount of <span class="math inline">\(O_2\)</span> required to burn this.<br />
+Do the same for ethane, multiplying by 0.05 and then <span class="math inline">\(\frac{7}{2}\)</span> to get the flow of <span class="math inline">\(O_2\)</span> required to burn the ethane.<br />
+Add these two oxygen flows together and multiply by 1 plus the excess. This gives the total amount of <span class="math inline">\(O_2\)</span> required. Divide this by 0.21 to get the amount of air required. Methane flow = <span class="math inline">\(110\;\times\;0.95\)</span> = <span class="math inline">\(104.5\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn methane = <span class="math inline">\(104.5\;\times\;2\;=\;209\)</span> kmol/hr</p>
+<p>Ethane flow = <span class="math inline">\(110\;\times\;0.05\)</span> = <span class="math inline">\(5.5\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn ethane = <span class="math inline">\(5.5\;\times\;\frac{7}{2}\;=\;19.25\)</span>kmol/hr</p>
+<p><span class="math inline">\(O_2\)</span> for burn = <span class="math inline">\(228.25\)</span>kmol/hr<br />
+Add excess gives total <span class="math inline">\(O_2\)</span> for burn = $228.25 (1 + 30 /100) $kmol/hr</p>
+<p>Divide by 21% air component to get air needed for burn = $228.25 (1 + 30 /100) / 0.21 $kmol/hr</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>1410</text>
+<tolerance>70.6488095</tolerance>
+</answer>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> R02 Q1 : natural_gas </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>To ensure complete combustion, <span class="math inline">\(45\)</span>% excess air is supplied to a furnace burning <span class="math inline">\(70\)</span>kmol/hr of natural gas. The v/v composition of natural gas is 95% methane and 5% ethane. Air contains 21% oxygen by mole. Calculate the number of kmol/hr of air required. The reactions are:<br />
+<span class="math display">\[CH_4 + 2O_2 \rightarrow  CO_2 + 2H_2O\]</span><br />
+<span class="math display">\[2C_2H_6 + 7O_2 \rightarrow 4CO_2 + 6H_2O\]</span></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Multiply the flow of fuel by 0.95 to get the flow of methane and multiply this by 2 to get the amount of <span class="math inline">\(O_2\)</span> required to burn this.<br />
+Do the same for ethane, multiplying by 0.05 and then <span class="math inline">\(\frac{7}{2}\)</span> to get the flow of <span class="math inline">\(O_2\)</span> required to burn the ethane.<br />
+Add these two oxygen flows together and multiply by 1 plus the excess. This gives the total amount of <span class="math inline">\(O_2\)</span> required. Divide this by 0.21 to get the amount of air required. Methane flow = <span class="math inline">\(70\;\times\;0.95\)</span> = <span class="math inline">\(66.5\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn methane = <span class="math inline">\(66.5\;\times\;2\;=\;133\)</span> kmol/hr</p>
+<p>Ethane flow = <span class="math inline">\(70\;\times\;0.05\)</span> = <span class="math inline">\(3.5\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn ethane = <span class="math inline">\(3.5\;\times\;\frac{7}{2}\;=\;12.25\)</span>kmol/hr</p>
+<p><span class="math inline">\(O_2\)</span> for burn = <span class="math inline">\(145.25\)</span>kmol/hr<br />
+Add excess gives total <span class="math inline">\(O_2\)</span> for burn = $145.25 (1 + 45 /100) $kmol/hr</p>
+<p>Divide by 21% air component to get air needed for burn = $145.25 (1 + 45 /100) / 0.21 $kmol/hr</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>1000</text>
+<tolerance>50.1458333</tolerance>
+</answer>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> R03 Q1 : natural_gas </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>To ensure complete combustion, <span class="math inline">\(20\)</span>% excess air is supplied to a furnace burning <span class="math inline">\(50\)</span>kmol/hr of natural gas. The v/v composition of natural gas is 95% methane and 5% ethane. Air contains 21% oxygen by mole. Calculate the number of kmol/hr of air required. The reactions are:<br />
+<span class="math display">\[CH_4 + 2O_2 \rightarrow  CO_2 + 2H_2O\]</span><br />
+<span class="math display">\[2C_2H_6 + 7O_2 \rightarrow 4CO_2 + 6H_2O\]</span></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Multiply the flow of fuel by 0.95 to get the flow of methane and multiply this by 2 to get the amount of <span class="math inline">\(O_2\)</span> required to burn this.<br />
+Do the same for ethane, multiplying by 0.05 and then <span class="math inline">\(\frac{7}{2}\)</span> to get the flow of <span class="math inline">\(O_2\)</span> required to burn the ethane.<br />
+Add these two oxygen flows together and multiply by 1 plus the excess. This gives the total amount of <span class="math inline">\(O_2\)</span> required. Divide this by 0.21 to get the amount of air required. Methane flow = <span class="math inline">\(50\;\times\;0.95\)</span> = <span class="math inline">\(47.5\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn methane = <span class="math inline">\(47.5\;\times\;2\;=\;95\)</span> kmol/hr</p>
+<p>Ethane flow = <span class="math inline">\(50\;\times\;0.05\)</span> = <span class="math inline">\(2.5\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn ethane = <span class="math inline">\(2.5\;\times\;\frac{7}{2}\;=\;8.75\)</span>kmol/hr</p>
+<p><span class="math inline">\(O_2\)</span> for burn = <span class="math inline">\(103.75\)</span>kmol/hr<br />
+Add excess gives total <span class="math inline">\(O_2\)</span> for burn = $103.75 (1 + 20 /100) $kmol/hr</p>
+<p>Divide by 21% air component to get air needed for burn = $103.75 (1 + 20 /100) / 0.21 $kmol/hr</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>593</text>
+<tolerance>29.6428571</tolerance>
+</answer>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> R04 Q1 : natural_gas </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>To ensure complete combustion, <span class="math inline">\(20\)</span>% excess air is supplied to a furnace burning <span class="math inline">\(85\)</span>kmol/hr of natural gas. The v/v composition of natural gas is 95% methane and 5% ethane. Air contains 21% oxygen by mole. Calculate the number of kmol/hr of air required. The reactions are:<br />
+<span class="math display">\[CH_4 + 2O_2 \rightarrow  CO_2 + 2H_2O\]</span><br />
+<span class="math display">\[2C_2H_6 + 7O_2 \rightarrow 4CO_2 + 6H_2O\]</span></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Multiply the flow of fuel by 0.95 to get the flow of methane and multiply this by 2 to get the amount of <span class="math inline">\(O_2\)</span> required to burn this.<br />
+Do the same for ethane, multiplying by 0.05 and then <span class="math inline">\(\frac{7}{2}\)</span> to get the flow of <span class="math inline">\(O_2\)</span> required to burn the ethane.<br />
+Add these two oxygen flows together and multiply by 1 plus the excess. This gives the total amount of <span class="math inline">\(O_2\)</span> required. Divide this by 0.21 to get the amount of air required. Methane flow = <span class="math inline">\(85\;\times\;0.95\)</span> = <span class="math inline">\(80.75\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn methane = <span class="math inline">\(80.75\;\times\;2\;=\;161.5\)</span> kmol/hr</p>
+<p>Ethane flow = <span class="math inline">\(85\;\times\;0.05\)</span> = <span class="math inline">\(4.25\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn ethane = <span class="math inline">\(4.25\;\times\;\frac{7}{2}\;=\;14.875\)</span>kmol/hr</p>
+<p><span class="math inline">\(O_2\)</span> for burn = <span class="math inline">\(176.375\)</span>kmol/hr<br />
+Add excess gives total <span class="math inline">\(O_2\)</span> for burn = $176.375 (1 + 20 /100) $kmol/hr</p>
+<p>Divide by 21% air component to get air needed for burn = $176.375 (1 + 20 /100) / 0.21 $kmol/hr</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>1010</text>
+<tolerance>50.3928571</tolerance>
+</answer>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> R05 Q1 : natural_gas </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>To ensure complete combustion, <span class="math inline">\(40\)</span>% excess air is supplied to a furnace burning <span class="math inline">\(75\)</span>kmol/hr of natural gas. The v/v composition of natural gas is 95% methane and 5% ethane. Air contains 21% oxygen by mole. Calculate the number of kmol/hr of air required. The reactions are:<br />
+<span class="math display">\[CH_4 + 2O_2 \rightarrow  CO_2 + 2H_2O\]</span><br />
+<span class="math display">\[2C_2H_6 + 7O_2 \rightarrow 4CO_2 + 6H_2O\]</span></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Multiply the flow of fuel by 0.95 to get the flow of methane and multiply this by 2 to get the amount of <span class="math inline">\(O_2\)</span> required to burn this.<br />
+Do the same for ethane, multiplying by 0.05 and then <span class="math inline">\(\frac{7}{2}\)</span> to get the flow of <span class="math inline">\(O_2\)</span> required to burn the ethane.<br />
+Add these two oxygen flows together and multiply by 1 plus the excess. This gives the total amount of <span class="math inline">\(O_2\)</span> required. Divide this by 0.21 to get the amount of air required. Methane flow = <span class="math inline">\(75\;\times\;0.95\)</span> = <span class="math inline">\(71.25\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn methane = <span class="math inline">\(71.25\;\times\;2\;=\;142.5\)</span> kmol/hr</p>
+<p>Ethane flow = <span class="math inline">\(75\;\times\;0.05\)</span> = <span class="math inline">\(3.75\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn ethane = <span class="math inline">\(3.75\;\times\;\frac{7}{2}\;=\;13.125\)</span>kmol/hr</p>
+<p><span class="math inline">\(O_2\)</span> for burn = <span class="math inline">\(155.625\)</span>kmol/hr<br />
+Add excess gives total <span class="math inline">\(O_2\)</span> for burn = $155.625 (1 + 40 /100) $kmol/hr</p>
+<p>Divide by 21% air component to get air needed for burn = $155.625 (1 + 40 /100) / 0.21 $kmol/hr</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>1040</text>
+<tolerance>51.875</tolerance>
+</answer>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> R06 Q1 : natural_gas </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>To ensure complete combustion, <span class="math inline">\(45\)</span>% excess air is supplied to a furnace burning <span class="math inline">\(175\)</span>kmol/hr of natural gas. The v/v composition of natural gas is 95% methane and 5% ethane. Air contains 21% oxygen by mole. Calculate the number of kmol/hr of air required. The reactions are:<br />
+<span class="math display">\[CH_4 + 2O_2 \rightarrow  CO_2 + 2H_2O\]</span><br />
+<span class="math display">\[2C_2H_6 + 7O_2 \rightarrow 4CO_2 + 6H_2O\]</span></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Multiply the flow of fuel by 0.95 to get the flow of methane and multiply this by 2 to get the amount of <span class="math inline">\(O_2\)</span> required to burn this.<br />
+Do the same for ethane, multiplying by 0.05 and then <span class="math inline">\(\frac{7}{2}\)</span> to get the flow of <span class="math inline">\(O_2\)</span> required to burn the ethane.<br />
+Add these two oxygen flows together and multiply by 1 plus the excess. This gives the total amount of <span class="math inline">\(O_2\)</span> required. Divide this by 0.21 to get the amount of air required. Methane flow = <span class="math inline">\(175\;\times\;0.95\)</span> = <span class="math inline">\(166.25\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn methane = <span class="math inline">\(166.25\;\times\;2\;=\;332.5\)</span> kmol/hr</p>
+<p>Ethane flow = <span class="math inline">\(175\;\times\;0.05\)</span> = <span class="math inline">\(8.75\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn ethane = <span class="math inline">\(8.75\;\times\;\frac{7}{2}\;=\;30.625\)</span>kmol/hr</p>
+<p><span class="math inline">\(O_2\)</span> for burn = <span class="math inline">\(363.125\)</span>kmol/hr<br />
+Add excess gives total <span class="math inline">\(O_2\)</span> for burn = $363.125 (1 + 45 /100) $kmol/hr</p>
+<p>Divide by 21% air component to get air needed for burn = $363.125 (1 + 45 /100) / 0.21 $kmol/hr</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>2510</text>
+<tolerance>125.3645833</tolerance>
+</answer>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> R07 Q1 : natural_gas </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>To ensure complete combustion, <span class="math inline">\(45\)</span>% excess air is supplied to a furnace burning <span class="math inline">\(105\)</span>kmol/hr of natural gas. The v/v composition of natural gas is 95% methane and 5% ethane. Air contains 21% oxygen by mole. Calculate the number of kmol/hr of air required. The reactions are:<br />
+<span class="math display">\[CH_4 + 2O_2 \rightarrow  CO_2 + 2H_2O\]</span><br />
+<span class="math display">\[2C_2H_6 + 7O_2 \rightarrow 4CO_2 + 6H_2O\]</span></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Multiply the flow of fuel by 0.95 to get the flow of methane and multiply this by 2 to get the amount of <span class="math inline">\(O_2\)</span> required to burn this.<br />
+Do the same for ethane, multiplying by 0.05 and then <span class="math inline">\(\frac{7}{2}\)</span> to get the flow of <span class="math inline">\(O_2\)</span> required to burn the ethane.<br />
+Add these two oxygen flows together and multiply by 1 plus the excess. This gives the total amount of <span class="math inline">\(O_2\)</span> required. Divide this by 0.21 to get the amount of air required. Methane flow = <span class="math inline">\(105\;\times\;0.95\)</span> = <span class="math inline">\(99.75\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn methane = <span class="math inline">\(99.75\;\times\;2\;=\;199.5\)</span> kmol/hr</p>
+<p>Ethane flow = <span class="math inline">\(105\;\times\;0.05\)</span> = <span class="math inline">\(5.25\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn ethane = <span class="math inline">\(5.25\;\times\;\frac{7}{2}\;=\;18.375\)</span>kmol/hr</p>
+<p><span class="math inline">\(O_2\)</span> for burn = <span class="math inline">\(217.875\)</span>kmol/hr<br />
+Add excess gives total <span class="math inline">\(O_2\)</span> for burn = $217.875 (1 + 45 /100) $kmol/hr</p>
+<p>Divide by 21% air component to get air needed for burn = $217.875 (1 + 45 /100) / 0.21 $kmol/hr</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>1500</text>
+<tolerance>75.21875</tolerance>
+</answer>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> R08 Q1 : natural_gas </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>To ensure complete combustion, <span class="math inline">\(20\)</span>% excess air is supplied to a furnace burning <span class="math inline">\(95\)</span>kmol/hr of natural gas. The v/v composition of natural gas is 95% methane and 5% ethane. Air contains 21% oxygen by mole. Calculate the number of kmol/hr of air required. The reactions are:<br />
+<span class="math display">\[CH_4 + 2O_2 \rightarrow  CO_2 + 2H_2O\]</span><br />
+<span class="math display">\[2C_2H_6 + 7O_2 \rightarrow 4CO_2 + 6H_2O\]</span></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Multiply the flow of fuel by 0.95 to get the flow of methane and multiply this by 2 to get the amount of <span class="math inline">\(O_2\)</span> required to burn this.<br />
+Do the same for ethane, multiplying by 0.05 and then <span class="math inline">\(\frac{7}{2}\)</span> to get the flow of <span class="math inline">\(O_2\)</span> required to burn the ethane.<br />
+Add these two oxygen flows together and multiply by 1 plus the excess. This gives the total amount of <span class="math inline">\(O_2\)</span> required. Divide this by 0.21 to get the amount of air required. Methane flow = <span class="math inline">\(95\;\times\;0.95\)</span> = <span class="math inline">\(90.25\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn methane = <span class="math inline">\(90.25\;\times\;2\;=\;180.5\)</span> kmol/hr</p>
+<p>Ethane flow = <span class="math inline">\(95\;\times\;0.05\)</span> = <span class="math inline">\(4.75\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn ethane = <span class="math inline">\(4.75\;\times\;\frac{7}{2}\;=\;16.625\)</span>kmol/hr</p>
+<p><span class="math inline">\(O_2\)</span> for burn = <span class="math inline">\(197.125\)</span>kmol/hr<br />
+Add excess gives total <span class="math inline">\(O_2\)</span> for burn = $197.125 (1 + 20 /100) $kmol/hr</p>
+<p>Divide by 21% air component to get air needed for burn = $197.125 (1 + 20 /100) / 0.21 $kmol/hr</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>1130</text>
+<tolerance>56.3214286</tolerance>
+</answer>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> R09 Q1 : natural_gas </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>To ensure complete combustion, <span class="math inline">\(20\)</span>% excess air is supplied to a furnace burning <span class="math inline">\(95\)</span>kmol/hr of natural gas. The v/v composition of natural gas is 95% methane and 5% ethane. Air contains 21% oxygen by mole. Calculate the number of kmol/hr of air required. The reactions are:<br />
+<span class="math display">\[CH_4 + 2O_2 \rightarrow  CO_2 + 2H_2O\]</span><br />
+<span class="math display">\[2C_2H_6 + 7O_2 \rightarrow 4CO_2 + 6H_2O\]</span></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Multiply the flow of fuel by 0.95 to get the flow of methane and multiply this by 2 to get the amount of <span class="math inline">\(O_2\)</span> required to burn this.<br />
+Do the same for ethane, multiplying by 0.05 and then <span class="math inline">\(\frac{7}{2}\)</span> to get the flow of <span class="math inline">\(O_2\)</span> required to burn the ethane.<br />
+Add these two oxygen flows together and multiply by 1 plus the excess. This gives the total amount of <span class="math inline">\(O_2\)</span> required. Divide this by 0.21 to get the amount of air required. Methane flow = <span class="math inline">\(95\;\times\;0.95\)</span> = <span class="math inline">\(90.25\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn methane = <span class="math inline">\(90.25\;\times\;2\;=\;180.5\)</span> kmol/hr</p>
+<p>Ethane flow = <span class="math inline">\(95\;\times\;0.05\)</span> = <span class="math inline">\(4.75\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn ethane = <span class="math inline">\(4.75\;\times\;\frac{7}{2}\;=\;16.625\)</span>kmol/hr</p>
+<p><span class="math inline">\(O_2\)</span> for burn = <span class="math inline">\(197.125\)</span>kmol/hr<br />
+Add excess gives total <span class="math inline">\(O_2\)</span> for burn = $197.125 (1 + 20 /100) $kmol/hr</p>
+<p>Divide by 21% air component to get air needed for burn = $197.125 (1 + 20 /100) / 0.21 $kmol/hr</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>1130</text>
+<tolerance>56.3214286</tolerance>
+</answer>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> R10 Q1 : natural_gas </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>To ensure complete combustion, <span class="math inline">\(45\)</span>% excess air is supplied to a furnace burning <span class="math inline">\(195\)</span>kmol/hr of natural gas. The v/v composition of natural gas is 95% methane and 5% ethane. Air contains 21% oxygen by mole. Calculate the number of kmol/hr of air required. The reactions are:<br />
+<span class="math display">\[CH_4 + 2O_2 \rightarrow  CO_2 + 2H_2O\]</span><br />
+<span class="math display">\[2C_2H_6 + 7O_2 \rightarrow 4CO_2 + 6H_2O\]</span></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Multiply the flow of fuel by 0.95 to get the flow of methane and multiply this by 2 to get the amount of <span class="math inline">\(O_2\)</span> required to burn this.<br />
+Do the same for ethane, multiplying by 0.05 and then <span class="math inline">\(\frac{7}{2}\)</span> to get the flow of <span class="math inline">\(O_2\)</span> required to burn the ethane.<br />
+Add these two oxygen flows together and multiply by 1 plus the excess. This gives the total amount of <span class="math inline">\(O_2\)</span> required. Divide this by 0.21 to get the amount of air required. Methane flow = <span class="math inline">\(195\;\times\;0.95\)</span> = <span class="math inline">\(185.25\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn methane = <span class="math inline">\(185.25\;\times\;2\;=\;370.5\)</span> kmol/hr</p>
+<p>Ethane flow = <span class="math inline">\(195\;\times\;0.05\)</span> = <span class="math inline">\(9.75\)</span>kmol/hr<br />
+<span class="math inline">\(O_2\)</span> to burn ethane = <span class="math inline">\(9.75\;\times\;\frac{7}{2}\;=\;34.125\)</span>kmol/hr</p>
+<p><span class="math inline">\(O_2\)</span> for burn = <span class="math inline">\(404.625\)</span>kmol/hr<br />
+Add excess gives total <span class="math inline">\(O_2\)</span> for burn = $404.625 (1 + 45 /100) $kmol/hr</p>
+<p>Divide by 21% air component to get air needed for burn = $404.625 (1 + 45 /100) / 0.21 $kmol/hr</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>2790</text>
+<tolerance>139.6919643</tolerance>
+</answer>
+</question>
+
+</quiz>

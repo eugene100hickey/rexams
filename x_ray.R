@@ -1,0 +1,48 @@
+# library(tidyverse)
+# library(glue)
+# library(ggrepel)
+
+habit <- runif(1, 0, 2) %>% round(0)
+
+theme_set(theme_minimal())
+theme_update(text = element_text(family = "Ink Free", size = 20))
+
+harmon_1 <- rnorm(1, 14, 1)
+harmon_2 <- rnorm(1, 11, 1)
+harmon_3 <- rnorm(1, 6.5, 0.5)
+
+multiplier <- function(x){
+  0.003 +abs(sin(2*x/harmon_1) * sin(2*x/harmon_2) * sin(2*x/harmon_3) / (2*x)) + 1/(30*2*x)
+}
+
+za <- expand_grid(z1=0:4, z2=0:4, z3=0:4) %>% 
+  filter(z1>=z2, z2>=z3, z1>0)
+
+s <- ifelse(habit == 0 , za <- za %>%  filter((z1 + z2 + z3) %% 2 ==0), 
+       ifelse(habit == 1, za <- za %>% filter((z1 %% 2 + z2 %% 2 + z3 %% 2) %in% c(0, 3)),
+                     za <- za))
+
+lambda <- 0.154051
+lattice <- 0.6
+two_theta <- seq(10, 60, 0.005)
+fcc <- data.frame(h = za$z1, 
+                  k = za$z2, 
+                  l = za$z3) %>% 
+  mutate(h2k2l2 = (h^2+k^2+l^2)) %>% 
+  mutate(d = sqrt(lattice/h2k2l2)) %>% 
+  mutate(theta = 180/pi * asin(lambda/2/d) + rnorm(1, 0, 0.4),
+         hkl = glue("({h} {k} {l})")) %>% 
+  mutate(height = multiplier(theta)) %>% 
+  filter(theta < 30)
+
+noise <- rnorm(length(two_theta), 0, sd = 0.0002)
+
+spectrum <- data.frame(two_theta = two_theta) %>% 
+  mutate(intensity = dnorm(two_theta, mean = 2*fcc$theta, sd = 0.2) * 
+                        (0.003+abs(sin(two_theta/harmon_1) * sin(two_theta/harmon_2) * sin(two_theta/harmon_3) / two_theta)) + noise + 1/(30*two_theta))
+
+spectrum %>% ggplot(aes(two_theta, intensity)) + 
+  geom_line(colour = "lightblue") + 
+  geom_text_repel(data = fcc, aes(x = 2*theta, y = height+0.0015, label = hkl)) +
+  labs(x = "2θ")
+  
